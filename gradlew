@@ -13,4 +13,4 @@ APP_BASE_NAME=$(basename "$0")
 # Find the real path of the script
 WRAPPER_DIR=$(cd "$(dirname "$0")" && pwd)
 
-exec "$WRAPPER_DIR/gradle/wrapper/gradle-wrapper.jar" "$@"
+exec "$JAVACMD" $JAVA_OPTS -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
