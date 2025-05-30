@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    namespace 'com.example.tubesoundapp'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.tubesoundapp"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        // Permessi necessari per il download e accesso alla rete
+        // Se usi Android 13+ aggiungi anche permessi runtime per le notifiche ecc.
+        // Le permission runtime le gestirai nel codice Kotlin
+    }
+
+    buildTypes {
+        release {
+            // Senza minify per semplificare
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.0"
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.10.0'
+
+    // NewPipeExtractor (versione ufficiale al momento)
+    implementation 'org.schabi.newpipeextractor:newpipeextractor:0.22.9'
+
+    // Coroutines per chiamate asincrone
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
+
+    // Per download e scrittura file
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+}
+
